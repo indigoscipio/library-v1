@@ -16,7 +16,7 @@ function Book(title, author, pages, isRead) {
   // the constructor...
 }
 
-function updateDisplay(newBook) {
+function updateDisplay() {
   //loop through each objects in myLibrary, and create a new card with corresponding names
   bookContainer.innerHTML = "";
   myLibrary.forEach((book, idx) => {
@@ -43,16 +43,28 @@ function addBookToLibrary() {
   );
   //push the created obj to MyLibrary
   myLibrary.push(newBook);
-  updateDisplay(newBook);
-  //update the book container DOM
-}
-
-function removeBook() {
-  return true;
+  updateDisplay();
 }
 
 btnAddBook.addEventListener("click", addBookToLibrary);
-btnRemoveBook.addEventListener("click", removeBook);
+
+function removeBook() {
+  [...btnRemoveBook].forEach((button, idx) => {
+    button.addEventListener("click", () => {
+      myLibrary.splice(idx, idx + 1);
+      console.log(`book ${idx} removed!`);
+    });
+  });
+}
+
+// function removeBook() {
+//   [...btnRemoveBook].forEach((button, idx) => {
+//     button.addEventListener("click", () => {
+//       myLibrary.splice(idx, idx + 1);
+//       console.log(`book ${idx} removed!`);
+//     });
+//   });
+// }
 
 //3. Write a function that loops through the library and display them as cards
 //4. add a new book function
