@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 1px solid red;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+button {
+  cursor: pointer;
+  padding: 16px;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-container {
+  height: 100%;
+  width: 100%;
+}
+
+.book-card {
+  margin: 24px;
+  width: 200px;
+  height: 300px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+}
