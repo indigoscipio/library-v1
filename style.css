@@ -18,6 +18,17 @@ body {
 button {
   cursor: pointer;
   padding: 16px;
+  border: none;
+}
+
+.toggle-read.read {
+  background-color: red;
+  color: white;
+}
+
+.toggle-read-modal.read {
+  background-color: red;
+  color: white;
 }
 
 nav {

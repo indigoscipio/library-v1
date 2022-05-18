@@ -9,6 +9,8 @@ let btnRemoveBook = document.getElementsByClassName("remove-book");
 let myLibrary = [];
 
 btnAddBook.addEventListener("click", addBookToLibrary);
+btnToggleRead.addEventListener("click", setReadStatus);
+document.addEventListener("click", toggleRead);
 document.addEventListener("click", removeBook);
 
 function Book(title, author, pages, isRead) {
@@ -17,6 +19,18 @@ function Book(title, author, pages, isRead) {
   this.pages = pages;
   this.isRead = isRead;
   // the constructor...
+}
+
+//if the modal button contains read, return read
+function setReadStatus() {
+  if (!btnToggleRead.classList.contains("read")) {
+    btnToggleRead.classList.toggle("read");
+    return false;
+  }
+  if (btnToggleRead.classList.contains("read")) {
+    btnToggleRead.classList.toggle("read");
+    return true;
+  }
 }
 
 function updateDisplay() {
@@ -30,11 +44,18 @@ function updateDisplay() {
     <h2>${myLibrary[idx].title}</h2>
     <h3>${myLibrary[idx].author}</h3>
     <p>${myLibrary[idx].pages}</p>
-    <button class="toggle-read">Still Reading</button>
+    <button class="toggle-read ${checkIfRead(idx)}">Still Reading</button>
     <button class="remove-book">Remove Book</button>`;
     bookContainer.appendChild(newCard);
   });
-  console.log(myLibrary);
+}
+
+function checkIfRead(idx) {
+  if (myLibrary[idx].isRead) {
+    return "read";
+  } else {
+    return "unread";
+  }
 }
 
 function addBookToLibrary() {
@@ -42,11 +63,11 @@ function addBookToLibrary() {
     inputBookTitle.value,
     inputBookAuthor.value,
     inputBookPages.value,
-    false
+    btnToggleRead.classList.contains("read")
   );
   //push the created obj to MyLibrary
+  // updateDisplay();
   myLibrary.push(newBook);
-  updateDisplay();
 }
 
 function removeBook(e) {
@@ -54,6 +75,21 @@ function removeBook(e) {
     let idx = e.target.parentElement.dataset.index;
     myLibrary.splice(idx, 1);
   }
+  updateDisplay();
+}
+
+function toggleRead(e) {
+  if (e.target.classList.contains("toggle-read")) {
+    let idx = e.target.parentElement.dataset.index;
+    if (!myLibrary[idx].isRead) {
+      e.target.classList.toggle("read");
+      myLibrary[idx].isRead = true;
+    } else {
+      e.target.classList.toggle("read");
+      myLibrary[idx].isRead = false;
+    }
+  }
+  console.log(myLibrary);
   updateDisplay();
 }
 
