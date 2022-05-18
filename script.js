@@ -1,10 +1,13 @@
 let btnAddBook = document.querySelector("#add-book");
+let btnModal = document.querySelector("#modal-button");
+let modalContainer = document.querySelector("#modal-container");
 let bookContainer = document.querySelector(".book-container");
 let inputBookTitle = document.getElementById("book-title");
 let inputBookAuthor = document.querySelector("#book-author");
 let inputBookPages = document.querySelector("#book-pages");
 let btnToggleRead = document.querySelector("#toggle-read");
 let btnRemoveBook = document.getElementsByClassName("remove-book");
+let modalCloseIcon = document.querySelector("#modal-close-icon");
 
 let myLibrary = [];
 
@@ -12,6 +15,14 @@ btnAddBook.addEventListener("click", addBookToLibrary);
 btnToggleRead.addEventListener("click", setReadStatus);
 document.addEventListener("click", toggleRead);
 document.addEventListener("click", removeBook);
+btnModal.addEventListener("click", toggleModal);
+
+function toggleModal() {
+  modalContainer.classList.toggle("active");
+  modalCloseIcon.addEventListener("click", () => {
+    modalContainer.classList.remove("active");
+  });
+}
 
 function Book(title, author, pages, isRead) {
   this.title = title;
