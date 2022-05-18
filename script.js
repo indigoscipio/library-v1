@@ -8,11 +8,14 @@ let btnRemoveBook = document.getElementsByClassName("remove-book");
 
 let myLibrary = [];
 
+btnAddBook.addEventListener("click", addBookToLibrary);
+document.addEventListener("click", removeBook);
+
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.isRead = false;
+  this.isRead = isRead;
   // the constructor...
 }
 
@@ -46,15 +49,12 @@ function addBookToLibrary() {
   updateDisplay();
 }
 
-btnAddBook.addEventListener("click", addBookToLibrary);
-
-function removeBook() {
-  [...btnRemoveBook].forEach((button, idx) => {
-    button.addEventListener("click", () => {
-      myLibrary.splice(idx, idx + 1);
-      console.log(`book ${idx} removed!`);
-    });
-  });
+function removeBook(e) {
+  if (e.target.classList.contains("remove-book")) {
+    let idx = e.target.parentElement.dataset.index;
+    myLibrary.splice(idx, 1);
+  }
+  updateDisplay();
 }
 
 // function removeBook() {
