@@ -15,14 +15,6 @@ btnAddBook.addEventListener("click", addBookToLibrary);
 btnToggleRead.addEventListener("click", setReadStatus);
 document.addEventListener("click", toggleRead);
 document.addEventListener("click", removeBook);
-btnModal.addEventListener("click", toggleModal);
-
-function toggleModal() {
-  modalContainer.classList.toggle("active");
-  modalCloseIcon.addEventListener("click", () => {
-    modalContainer.classList.remove("active");
-  });
-}
 
 function Book(title, author, pages, isRead) {
   this.title = title;
@@ -51,10 +43,13 @@ function updateDisplay() {
     newCard.classList.add("book-card");
     newCard.dataset.index = idx;
     newCard.innerHTML = `
+    <small>Book Title:</small>
     <h2>${myLibrary[idx].title}</h2>
+    <small>Book Author:</small>
     <h3>${myLibrary[idx].author}</h3>
+    <small>Book Pages:</small>
     <p>${myLibrary[idx].pages}</p>
-    <button class="toggle-read ${checkIfRead(idx)}">Still Reading</button>
+    <button class="toggle-read ${checkIfRead(idx)}">Read</button>
     <button class="remove-book">Remove Book</button>`;
     bookContainer.appendChild(newCard);
   });

@@ -8,34 +8,26 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="modal" id="modal-container">
-      <div class="modal-card">
-        <button class="modal-close-icon" id="modal-close-icon">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <h2>Add a new book to your reading list!</h2>
-        <div class="input-item">
-          <label for="book-title">Book Title:</label>
-          <input type="text" id="book-title" />
-        </div>
-        <div class="input-item">
-          <label for="book-author">Book Author:</label>
-          <input type="text" id="book-author" />
-        </div>
-        <div class="input-item">
-          <label for="book-pages">Book Pages:</label>
-          <input type="number" id="book-pages" />
-        </div>
-        <button class="toggle-read-modal" id="toggle-read">
-          Still Reading
-        </button>
-        <button class="button add-book" id="add-book">Add Book</button>
-      </div>
-    </div>
     <nav>
       <h1>NOTgoodreads™📚</h1>
-      <button class="button open-modal" id="modal-button">Add Book</button>
     </nav>
+    <div class="modal" id="modal-container">
+      <h2>Add a new book to your reading list!</h2>
+      <div class="input-item">
+        <label for="book-title">Book Title:</label>
+        <input type="text" id="book-title" />
+      </div>
+      <div class="input-item">
+        <label for="book-author">Book Author:</label>
+        <input type="text" id="book-author" />
+      </div>
+      <div class="input-item">
+        <label for="book-pages">Book Pages:</label>
+        <input type="number" id="book-pages" />
+      </div>
+      <button class="toggle-read-modal" id="toggle-read">Read</button>
+      <button class="button add-book" id="add-book">Add Book</button>
+    </div>
     <div class="book-container"></div>
     <footer><p>By Samuel Oktavianus</p></footer>
     <script src="script.js"></script>
